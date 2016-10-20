@@ -2,19 +2,20 @@
 
 A Ruby gem .  Batch Add Group To Xcodeproj , Include Real Dir.
 
-# Example
+# Install
 
-Help :
-
-> $ XAddGroup --help
+```
+$ gem install XAddGroup
+$ XAddGroup --help
+```
+# Example 
 
 Just Create newDir :
 
-> $ cd project-rootDir
-
-
-> $ XAddGroup  path-to/newDir 
-
+```
+$ cd project-rootDir
+$ XAddGroup  path-to/newDir
+```
 Batch Create Directorys :
 
 ```
@@ -26,20 +27,16 @@ Batch Create Directorys :
 	* Request
 ```
 
-> $ cd project-rootDir
-> 
-> XAddGroup  -b  path-to/newDir 
-
-
+```
+$ cd project-rootDir
+$ XAddGroup -b  path-to/newDir
+```
 # Requirements
 
 [Xcodeproj](https://github.com/CocoaPods/Xcodeproj)
 
 
-# 发布Gem 踩过的坑
-
-
-
+# 发布首个Gem 不得不说的坑
 
 环境:
 
@@ -89,7 +86,7 @@ export https_proxy=http://localhost:16823
  $ gem -v
 ```
 
-重启或重新打开一个终端窗口, 不然会影响最后的gem发布 
+重启终端或重新打开一个终端窗口, 不然会影响最后的gem发布 
 
 #### 2、替换rubygems.org 证书
 
@@ -140,7 +137,6 @@ $ gem push -v  path-to/XAddGroup-0.5.0.gem
 	200 OK
 	Successfully registered gem: XAddGroup (0.5.0)
 ```
-
 
 
 
