@@ -36,14 +36,19 @@ class XAddGroup
 		cmp = ''
 		arg_dir_new = ''
 		#检查参数。。
-		if arg.count == 1 
+		if arg.count == 0
+			puts "[!] Miss option paramter"
+		    puts ""
+			puts "\t Did you mean: --help?"
+			exit
+		elsif arg.count == 1 
 			if arg[0] == "--help"
 				puts "Usage:"
 			    puts "\t $ XAddGroup COMMAND"
 			    puts "\t Batch Add Group To Xcodeproj,And map Entity Directory ."
 			    puts "Commands:"
-			    puts "\t XAddGroup <group-path>           - 在当前项目根目录 查找<group-path>,如果没对应目录则默认创建"
-			    puts "\t XAddGroup mvvm <group-path>     - 在<group-path>目录下 批量生成子目录:'Model','View','ViewModel','ViewController','Request'"
+			    puts "\t XAddGroup <group-path>        - 在当前项目根目录 查找<group-path>,如果没对应目录则默认创建"
+			    puts "\t XAddGroup -b <group-path>     - 在<group-path>目录下 批量生成子目录:'Model','View','ViewModel','ViewController','Request'"
 			    exit
 			elsif arg[0] != '-b'  && arg[0].to_s.include?('-')
 			    puts "[!] Unknown option: '#{arg[0]}'"
@@ -51,7 +56,7 @@ class XAddGroup
 				puts "\t Did you mean: --help?"
 				exit
 			elsif arg[0] == '-b'
-				puts "[!] Miss Target dir_path'"
+				puts "[!] Miss Target dir_path"
 			    puts ""
 				puts "\t Did you mean: --help?"
 				exit
@@ -102,11 +107,18 @@ class XAddGroup
 			end
 		end
 
+		# puts ["cmp",cmp].join("===>") 
+		# puts ["arg_dir_new",arg_dir_new].join("===>") 
+		# puts ["new_groups",new_groups].join("===>") 
+		# puts ["new_groups[0].class",new_groups[0].class].join("===>") 
+		# puts ["new_groups.class",new_groups.class].join("===>") 
+
 		# 设置 group set_source_tree  set_path
 		new_groups.each do |group|
 		    #往上查找，并设置实际path
 		    pre_path = ""
 			group.parents.each do |parentGroup|
+				# puts ["parentGroup.display_name",parentGroup.display_name].join("===>")
 				if parentGroup.display_name == 'Main Group'
 					next
 				end
@@ -121,9 +133,16 @@ class XAddGroup
 			end
 
 			#设置实际路径
-			pre_path = [pre_path,group.display_name].join('/') 
+			# puts ["group.display_name",group.display_name].join("===>")
+			if pre_path == ""
+			    pre_path = group.display_name
+			else
+				pre_path = [pre_path,group.display_name].join('/') 
+			end
+			# puts ["pre_path",pre_path].join("===>")
 			group.set_source_tree('SOURCE_ROOT')
 			group.set_path(pre_path)
+
 			#创建group实体
 			createRealFinder(group)
 		end
