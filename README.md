@@ -31,6 +31,25 @@ Batch Create Directorys :
 $ cd project-rootDir
 $ XAddGroup -b  path-to/newDir
 ```
+
+Or Modificate .xaddgroup.yml :
+
+```
+$ vi ~/.xaddgroup.yml
+
+#
+# 在指定目录下,添加如下子目录
+#
+
+---
+- Model
+- View
+- ViewModel
+- ViewController
+- Request
+
+```
+
 # Requirements
 
 [Xcodeproj](https://github.com/CocoaPods/Xcodeproj)

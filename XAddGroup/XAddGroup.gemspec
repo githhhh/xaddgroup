@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'XAddGroup'
-  s.version     = '0.6.0'
+  s.version     = '0.6.1'
   s.date        = '2016-10-20'
   s.summary     = "XAddGroup , show more 'XAddGroup --help'"
   s.description = "Batch Add Group To Xcodeproj, And map Entity Directory ."

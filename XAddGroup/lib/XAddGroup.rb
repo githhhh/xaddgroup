@@ -1,5 +1,6 @@
 require "xcodeproj"
 require 'fileutils'
+require 'yaml'
 
 class XAddGroup
 
@@ -7,7 +8,7 @@ class XAddGroup
 		groupPath =  newgroup.real_path
 		begin
 			FileUtils::mkdir_p groupPath  unless File.exists?(groupPath)
-			puts groupPath 
+			puts [groupPath,'.......created'].join()
 		rescue Exception => e
 			raise "无法创建实体文件夹:" + e 
 		end
@@ -84,8 +85,36 @@ class XAddGroup
 		xprojName =  xprojs[0]
 
 		#自定义子目录
-		custom_mvvm_dirs = ['Model','View','ViewModel','ViewController','Request']
 
+		yml_content = <<-DESC
+
+#
+# 在指定目录下,添加如下子目录
+#
+
+---
+- Model
+- View
+- ViewModel
+- ViewController
+- Request
+
+		DESC
+
+		yml_path = File.join(Dir.home,'.xaddgroup.yml') 
+		 
+		if !File.exists?(yml_path) 
+			yml_file = File.new(yml_path,'w+')
+		    yml_file.syswrite(yml_content)
+			yml_file.close
+		end
+
+		custom_mvvm_dirs = YAML::load(File.open(yml_path))
+		if custom_mvvm_dirs.class.to_s != 'Array'
+			puts '[!] 配置文件格式错误'
+			puts yml_content
+			exit
+		end
 
 		#创建Xcodeproj 对象
 		project = Xcodeproj::Project.open(xprojName)
