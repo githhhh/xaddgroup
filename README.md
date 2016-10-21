@@ -1,6 +1,6 @@
 # XAddGroup
 
-A Ruby gem .  Batch Add Group To Xcodeproj , Include Real Dir.
+A Ruby gem .  Batch Add Group To Xcodeproj , map Real Dir.
 
 # Install
 
