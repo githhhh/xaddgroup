@@ -1,12 +1,12 @@
-# XAddGroup
+# xaddgroup
 
 A Ruby gem .  Batch Add Group To Xcodeproj , map Real Dir.
 
 # Install
 
 ```
-$ gem install XAddGroup
-$ XAddGroup --help
+$ gem install xaddgroup
+$ xaddgroup --help
 ```
 # Example 
 
@@ -14,7 +14,7 @@ Just Create newDir :
 
 ```
 $ cd project-rootDir
-$ XAddGroup  path-to/newDir
+$ xaddgroup  path-to/newDir
 ```
 Batch Create Directorys :
 
@@ -29,7 +29,7 @@ Batch Create Directorys :
 
 ```
 $ cd project-rootDir
-$ XAddGroup -b  path-to/newDir
+$ xaddgroup -b  path-to/newDir
 ```
 
 Or Modificate .xaddgroup.yml :
@@ -147,14 +147,14 @@ $ curl -u your_rubygems_org_name https://rubygems.org/api/v1/api_key.yaml > ~/.g
 下次不用登录直接push 就可以了
 
 ```
-$ gem push -v  path-to/XAddGroup-0.5.0.gem
+$ gem push -v  path-to/xaddgroup-0.5.0.gem
 
 	GET https://api.rubygems.org/latest_specs.4.8.gz
 	200 OK
 	Pushing gem to https://rubygems.org...
 	POST https://rubygems.org/api/v1/gems
 	200 OK
-	Successfully registered gem: XAddGroup (0.5.0)
+	Successfully registered gem: xaddgroup (0.5.0)
 ```
 
 

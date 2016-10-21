@@ -45,11 +45,11 @@ class XAddGroup
 		elsif arg.count == 1 
 			if arg[0] == "--help"
 				puts "Usage:"
-			    puts "\t $ XAddGroup COMMAND"
+			    puts "\t $ xaddgroup COMMAND"
 			    puts "\t Batch Add Group To Xcodeproj,And map Entity Directory ."
 			    puts "Commands:"
-			    puts "\t XAddGroup <group-path>        - 在当前项目根目录 查找<group-path>,如果没对应目录则默认创建"
-			    puts "\t XAddGroup -b <group-path>     - 在<group-path>目录下 批量生成子目录:'Model','View','ViewModel','ViewController','Request'"
+			    puts "\t xaddgroup <group-path>        - 在当前项目根目录 查找<group-path>,如果没对应目录则默认创建"
+			    puts "\t xaddgroup -b <group-path>     - 在<group-path>目录下 批量生成子目录:'Model','View','ViewModel','ViewController','Request'"
 			    exit
 			elsif arg[0] != '-b'  && arg[0].to_s.include?('-')
 			    puts "[!] Unknown option: '#{arg[0]}'"
